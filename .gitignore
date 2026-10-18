@@ -1,4 +1,8 @@
 build/
-*.exe
-.vs/
+*.ppm
 .vscode/
+.cache/
+__pycache__/
+*.pyc
+*.exe
+*.log
