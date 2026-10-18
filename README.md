@@ -81,6 +81,20 @@ robot_nural_network/
     ├── train_rl.py             # PPO Actor-Critic training script & weight exporter
     ├── quadruped_env.py        # Vectorized simulation environment
     └── model_weights.json      # Trained network weights exported from PyTorch
+
+└── vhdl/                       # Hardware Neural Network Accelerator (FPGA/ASIC)
+    ├── nn_types_pkg.vhd        # Q4.12 fixed-point types & dimensional constants
+    ├── weights_pkg.vhd         # Quantized pre-trained weights (W1, W2) & biases (b1, b2)
+    ├── activation_tanh.vhd     # Pipelined symmetric LUT + interpolation Tanh
+    ├── neuron.vhd              # Artificial neuron (multiplication, addition & activation)
+    ├── hidden_layer.vhd        # 64-neuron hidden layer (32 inputs)
+    ├── output_layer.vhd        # 10-neuron output layer (64 inputs)
+    ├── policy_network_top.vhd  # Cascaded policy controller accelerator
+    ├── uart_rx.vhd             # 8-N-1 UART receiver for input cable
+    ├── uart_tx.vhd             # 8-N-1 UART transmitter for output cable
+    ├── top.vhd                 # Master FPGA top-level entity with UART interface
+    ├── top.ucf                 # User Constraints File (UCF) for FPGA pin mappings
+    └── README.md               # Hardware architecture & synthesis documentation
 ```
 
 ---
